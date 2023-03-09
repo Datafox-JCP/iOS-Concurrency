@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct APISerive {
+struct APIService {
     let urlString: String // for represent the endpoint
     
     // Reusable API service class
