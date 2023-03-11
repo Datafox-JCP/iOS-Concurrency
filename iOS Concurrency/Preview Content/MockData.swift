@@ -18,13 +18,13 @@ extension User {
 
 extension Post {
     static var mockPosts: [Post] {
-        Bundle.main.decode([Post].self, from: "posts.json")
+        Bundle.main.decode([Post].self, from: "postss.json")
     }
     static var mockSinglePost: Post {
         Self.mockPosts[0]
     }
     
-    static var mockingSingleUsersPostsArray: [Post] {
-        Self.mockPosts.filter { $0.userId == 1 }
+    static var mockSingleUsersPostsArray: [Post] {
+        Self.mockPosts.filter { $0.userId == 1}
     }
 }

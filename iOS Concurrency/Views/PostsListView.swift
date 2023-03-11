@@ -25,6 +25,12 @@ struct PostsListView: View {
                 } // VStack
             }
         } // List
+        .overlay {
+            if vm.isLoading {
+                ProgressView()
+                
+            }
+        } // Conditional progress view
         .navigationTitle("Posts")
         .navigationBarTitleDisplayMode(.inline)
         .listStyle(.plain)

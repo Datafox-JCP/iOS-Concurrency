@@ -27,6 +27,19 @@ struct UsersListView: View {
                     } // NavLink
                 } // Loop
             } // List
+            .overlay {
+                if vm.isLoading {
+                    ProgressView()
+                    
+                }
+            } // Conditional progress view
+            .alert("Application error", isPresented: $vm.showAlert, actions: {
+                Button("OK") {}
+            }, message: {
+                if let errorMessage = vm.errMessage {
+                    Text(errorMessage)
+                }
+            })
             .navigationTitle("Users")
             .listStyle(.plain)
             .onAppear {
