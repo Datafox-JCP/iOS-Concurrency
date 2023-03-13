@@ -9,13 +9,13 @@ import SwiftUI
 
 struct PostsListView: View {
     // MARK: Properties
-    @StateObject var vm = PostsListViewModel()
-    var userId: Int?
+    
+    var posts: [Post]
     
     // MARK: View
     var body: some View {
         List {
-            ForEach(vm.posts) { post in
+            ForEach(posts) { post in
                 VStack(alignment: .leading) {
                     Text(post.title)
                         .font(.headline)
@@ -25,19 +25,9 @@ struct PostsListView: View {
                 } // VStack
             }
         } // List
-        .overlay {
-            if vm.isLoading {
-                ProgressView()
-                
-            }
-        } // Conditional progress view
         .navigationTitle("Posts")
         .navigationBarTitleDisplayMode(.inline)
         .listStyle(.plain)
-        .task {
-            vm.userId = userId
-            await vm.fetchPosts()
-        }
     }
 }
 
@@ -45,7 +35,7 @@ struct PostsListView: View {
 struct PostsListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            PostsListView(userId: 1)
+            PostsListView(posts: [])
         }
     }
 }
